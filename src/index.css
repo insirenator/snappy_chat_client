@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+}
+
+body,
+button {
+    font-family: Josefin Sans;
+}
+
+body {
+    @apply bg-blue-950;
+    /* height: 100vh;
+    width: 100vw; */
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+.link {
+    @apply text-white px-4 py-2 flex justify-center items-center rounded
+}
+
+.blue-link {
+    @apply bg-blue-400 hover:bg-blue-500
+}
+
+.green-link {
+    @apply bg-green-400 hover:bg-green-500
+}
+
+.form-container {
+    @apply md:w-1/2 lg:w-[600px] mx-auto mt-16 w-[90%] px-16 py-12 bg-black rounded-lg flex flex-col gap-8
+}
+
+.input-field {
+    @apply bg-transparent text-white w-full border-purple-900 border-2 rounded-md p-2 focus:border-purple-500 focus:outline-none
+}
+
+.contacts-list::-webkit-scrollbar {
+    width: 2px;
+}
+
+.contacts-list::-webkit-scrollbar-thumb {
+    @apply bg-slate-500
+}
+
+.chat-msgs::-webkit-scrollbar {
+    width: 2px;
+}
+
+.chat-msgs::-webkit-scrollbar-thumb {
+    @apply bg-slate-500
+}
