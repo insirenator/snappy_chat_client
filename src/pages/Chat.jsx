@@ -5,7 +5,8 @@ import Contacts from "../components/Contacts";
 import ChatBox from "../components/ChatBox.jsx";
 import Welcome from "../components/Welcome.jsx";
 import { useNavigate } from "react-router-dom";
-import { BiPowerOff } from "react-icons/bi";
+// import { BiPowerOff } from "react-icons/bi";
+import { IoIosSettings } from "react-icons/io";
 import { io } from "socket.io-client";
 
 const Chat = () => {
@@ -21,11 +22,11 @@ const Chat = () => {
     async function fetchContacts() {
       const storedUser = JSON.parse(localStorage.getItem("chat-app-user"));
       if (!storedUser) navigate("/login");
-
-      setCurrentUser(storedUser);
-
-      const { data } = await axios.get(`${routes.contacts}/${storedUser._id}`);
-      setContacts(data.data);
+      else {
+        setCurrentUser(storedUser);
+        const { data } = await axios.get(`${routes.contacts}/${storedUser._id}`);
+        setContacts(data.data);
+      }
     }
     fetchContacts();
   }, [navigate]);
@@ -37,7 +38,6 @@ const Chat = () => {
         setActiveUsers(active_users);
       })
       socket.current.emit("add-user", currentUser._id);
-      // socket.current.emit("send-active-users", currentUser._id);
 
       return () => {
         socket.current.emit("remove-user", currentUser._id);
@@ -69,11 +69,10 @@ const Chat = () => {
           <button
             className="bg-pink-500 hover:bg-pink-400 p-1 rounded"
             onClick={() => {
-              localStorage.removeItem("chat-app-user");
-              navigate("/");
+              navigate("/settings");
             }}
           >
-            <BiPowerOff />
+            <IoIosSettings />
           </button>
         </div>
       </div>

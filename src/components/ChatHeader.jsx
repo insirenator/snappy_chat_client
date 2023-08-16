@@ -32,7 +32,7 @@ const ChatHeader = ({ contact, onBack, isActive }) => {
 
       {/* ContactProfile */}
       {showProfile && (
-        <div className="fixed top-1/4 left-1/2 bg-gray-900 w-64 h-64 -translate-x-16 -translate-y-16 p-8 flex flex-col justify-center items-center gap-4 rounded-xl shadow-2xl">
+        <div className="fixed z-10 top-1/4 left-1/2 bg-gray-900 w-64 h-64 -translate-x-16 -translate-y-16 p-8 flex flex-col justify-center items-center gap-4 rounded-xl shadow-2xl">
           <img
             src={
               contact.avatarImage

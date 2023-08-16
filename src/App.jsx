@@ -5,6 +5,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import SetAvatar from "./pages/SetAvatar";
 import Chat from "./pages/Chat";
+import Settings from "./pages/Settings";
+import BuyAvatars from "./pages/BuyAvatars";
 
 const router = createBrowserRouter([
   {
@@ -24,8 +26,16 @@ const router = createBrowserRouter([
     element: <SetAvatar />
   },
   {
+    path: "/buyAvatars",
+    element: <BuyAvatars />
+  },
+  {
     path: "/chat",
     element: <Chat />
+  },
+  {
+    path: "/settings",
+    element: <Settings />
   }
 ]);
 

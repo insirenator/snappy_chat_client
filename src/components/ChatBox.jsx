@@ -23,9 +23,8 @@ const ChatBox = ({ currentUser, contact, onBack, socket, isActive }) => {
     });
 
     console.log(data);
-    // const msgs = [...messages];
-    // msgs.push({ fromSelf: true, message, timestamp: data.data.createdAt});
-    const today = messages["Today"];
+
+    const today = messages["Today"] || []; //if there are no messages in today
     today.push({ fromSelf: true, message, timestamp: data.data.createdAt });
     setMessages((prev) => ({
       ...prev,
@@ -49,7 +48,7 @@ const ChatBox = ({ currentUser, contact, onBack, socket, isActive }) => {
       socket.current.on("msg-receive", (msg) => {
         setMessages((prev) => {
           console.log(prev);
-          const today = prev["Today"];
+          const today = prev["Today"] || [];
           today.push({
             fromSelf: false,
             message: msg,
@@ -140,10 +139,10 @@ const sanitizeDate = (timestamp) => {
     todayObj.month !== inputDateObj.month &&
     todayObj.year === inputDateObj.year
   ) {
-    label = inputDateObj.date + MONTHS[inputDate.month];
+    label = inputDateObj.date + " " + MONTHS[inputDate.month];
 
   } else {
-    label = inputDateObj.date + MONTHS[inputDateObj.month] + inputDateObj.year;
+    label = inputDateObj.date + " " + MONTHS[inputDateObj.month] + " " + inputDateObj.year;
 
   }
 

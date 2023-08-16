@@ -6,6 +6,8 @@ const login = `${HOST}/api/auth/login`;
 
 const avatars = `${HOST}/api/avatars`;
 
+const premiumAvatars = `${HOST}/api/avatars/premium`;
+
 const setAvatar = `${HOST}/api/auth/setAvatar`;
 
 const contacts = `${HOST}/api/auth/contacts`;
@@ -14,4 +16,20 @@ const postMessage = `${HOST}/api/messages`;
 
 const getMessages = `${HOST}/api/messages`;
 
-export default { HOST, register, login, avatars, setAvatar, contacts, postMessage, getMessages }
+const purchase = `${HOST}/api/avatars/purchase`;
+
+const logo = `${HOST}/logo`;
+
+export default {
+  HOST,
+  register,
+  login,
+  avatars,
+  premiumAvatars,
+  setAvatar,
+  contacts,
+  postMessage,
+  getMessages,
+  purchase,
+  logo,
+};
