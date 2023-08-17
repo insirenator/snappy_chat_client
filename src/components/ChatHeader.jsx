@@ -7,7 +7,7 @@ const ChatHeader = ({ contact, onBack, isActive }) => {
   const [showProfile, SetShowProfile] = useState(false);
 
   return (
-    <div className="flex items-center gap-4 w-full p-4 shadow-xl bg-gray-900 rounded-se-xl">
+    <div className="flex items-center gap-4 w-full p-4 shadow-xl bg-gray-900 sm:rounded-se-xl">
       <button
         className="text-xl hover:text-slate-400 transition-all"
         onClick={onBack}

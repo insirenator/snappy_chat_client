@@ -8,6 +8,8 @@ const avatars = `${HOST}/api/avatars`;
 
 const premiumAvatars = `${HOST}/api/avatars/premium`;
 
+const purchasedAvatars = `${HOST}/api/avatars/purchasedAvatars`;
+
 const setAvatar = `${HOST}/api/auth/setAvatar`;
 
 const contacts = `${HOST}/api/auth/contacts`;
@@ -26,6 +28,7 @@ export default {
   login,
   avatars,
   premiumAvatars,
+  purchasedAvatars,
   setAvatar,
   contacts,
   postMessage,

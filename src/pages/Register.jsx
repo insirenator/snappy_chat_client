@@ -79,9 +79,9 @@ const Register = () => {
     return (
         <>
         <div className="form-container">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 justify-center">
                 <img src="/logo.svg" className="w-16 h-16"/>
-                <h1 className="text-white uppercase font-bold text-2xl">Snappy</h1>
+                {/* <h1 className="text-white uppercase font-bold text-2xl">Snappy</h1> */}
             </div>
 
             <form
@@ -116,7 +116,7 @@ const Register = () => {
                     onChange={handleChange}
                 />
                 <button type="submit" className="link blue-link w-full">Register</button>
-                <h2 className="text-gray-400">Already Have an account? 
+                <h2 className="text-gray-400 text-center text-sm">Already Have an account? 
                     <Link to="/login" className="text-green-300 hover:text-green-400"> Login</Link>
                 </h2>
             </form>

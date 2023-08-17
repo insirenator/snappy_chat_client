@@ -46,8 +46,8 @@ const Chat = () => {
   }, [currentUser])
 
   return (
-    <div className="bg-gray-800 text-white mt-10 mx-auto w-[95%] lg:w-3/4 xl:w-1/2 shadow-md flex rounded-xl h-[600px]">
-      <div className="bg-gray-900 w-1/4 rounded-s-xl flex flex-col">
+    <div className="bg-gray-800 text-white mt-10 mx-auto w-[95%] lg:w-3/4 xl:w-1/2 shadow-md flex sm:flex-row flex-col rounded-xl sm:h-[600px]">
+      <div className="bg-gray-900 sm:w-[30%] sm:rounded-s-xl flex flex-col">
         <div className="flex items-center justify-center gap-2 py-4">
           <img src="/logo.svg" className="w-10" />
           <h1 className="text-white uppercase font-bold">Snappy</h1>
@@ -55,7 +55,7 @@ const Chat = () => {
         {/* CONTACTS */}
         <Contacts contacts={contacts} onClickHandler={setSelectedContact} selectedContact={selectedContact} activeUsers={activeUsers}/>
 
-        <div className="flex items-center justify-center gap-6 bg-black py-5 mt-auto rounded-es-xl">
+        <div className="flex items-center justify-center gap-6 bg-black py-5 mt-auto sm:rounded-es-xl">
           <img
             src={
               currentUser.avatarImage

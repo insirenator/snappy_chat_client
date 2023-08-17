@@ -27,7 +27,7 @@ const ChatMessages = ({ messages }) => {
         if (scrollBottom > chatWindowBottom) setShowGoToBottom(true);
         else setShowGoToBottom(false);
       }}
-      className="chat-msgs flex-1 flex flex-col gap-2 items-start overflow-y-scroll w-full py-3 px-4 relative"
+      className="chat-msgs flex-1 flex flex-col gap-2 items-start overflow-y-scroll w-full py-3 px-4 relative min-h-[400px] max-h-96 sm:max-h-full"
     >
       {Object.keys(messages).length <= 0 ? (
         <p className="text-md text-gray-500 mx-auto my-auto">No Messages</p>

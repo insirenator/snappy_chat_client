@@ -16,14 +16,15 @@ const SetAvatar = () => {
 
     const [avatars, setAvatars] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [selectedAvatar, setSelectedAvatar] = useState(null);
+    const [selectedAvatar, setSelectedAvatar] = useState({});
+    const [purchasedAvatars, setPurchasedAvatars] = useState([]);
 
     const setProfilePicture = async () => {
         const storedUser = JSON.parse(localStorage.getItem("chat-app-user"));
 
         if(!storedUser) navigate("/login");
 
-        const { data } = await axios.post(`${routes.setAvatar}/${storedUser._id}`, { avatarImage: avatars[selectedAvatar].image});
+        const { data } = await axios.post(`${routes.setAvatar}/${storedUser._id}`, { avatarImage: selectedAvatar.image});
         console.log(data);
         localStorage.setItem("chat-app-user", JSON.stringify(data.data));
         navigate("/chat");
@@ -31,9 +32,17 @@ const SetAvatar = () => {
 
     useEffect(() => {
         async function fetchAvatars() {
+            const storedUser = JSON.parse(localStorage.getItem("chat-app-user"));
+            if(!storedUser) navigate("/login");
+
             const { data } = await axios.get(routes.avatars);
             console.log(data);
             setAvatars(data.data);
+
+            const { data: { purchasedAvatars } } = await axios.get(`${routes.purchasedAvatars}/${storedUser._id}`);
+            console.log(purchasedAvatars);
+            setPurchasedAvatars(purchasedAvatars);
+
             setIsLoading(false);
         }
 
@@ -47,21 +56,21 @@ const SetAvatar = () => {
                     <img src="/loader.gif" className="w-32 h-32 loader fixed top-1/2 -translate-y-16"/>
                 ) : (
                     <>
-                        <h1 className="text-3xl text-white font-bold">Pick your Avatar</h1>
+                        <h1 className="text-xl md:text-3xl text-white font-bold">Pick your Avatar</h1>
 
                         {/* Free Avatars */}
-                        <div className="flex gap-10 justify-center items-center flex-wrap sm:w-3/4 w-full p-1">
+                        <div className="flex gap-5 md:gap-10 justify-center items-center flex-wrap sm:w-3/4 w-full p-1">
                         {
                             avatars.map((avatar, idx) => {
                                 return (
                                     <div key={idx} className={ 
-                                    selectedAvatar === idx ? 
+                                    selectedAvatar._id === avatar._id ? 
                                     "border-2 border-purple-600 rounded-full" : ""
                                     }>
                                     <img 
                                     src={`data:image/svg+xml;base64,${avatar.image}`}
                                     alt="avatar"
-                                    onClick={() => setSelectedAvatar(idx)}
+                                    onClick={() => setSelectedAvatar(avatar)}
                                     className="w-10 sm:w-16 m-1 cursor-pointer"
                                     />
                                     </div>
@@ -73,18 +82,18 @@ const SetAvatar = () => {
                         {/* Purchased Avatars */}
                         <div className="sm:w-3/4 w-full flex flex-col items-center gap-4">
                         <p className="text-yellow-400 text-center">Purchased Avatars</p>
-                        <div  className="flex gap-10 justify-center items-center flex-wrap p-1">
+                        <div  className="flex gap-5 md:gap-10 justify-center items-center flex-wrap p-1">
                             {
-                                avatars.slice(0, 3).map((avatar, idx) => {
+                                purchasedAvatars.map((avatar, idx) => {
                                     return (
                                         <div key={idx} className={ 
-                                        selectedAvatar === idx ? 
+                                        selectedAvatar._id === avatar.avatarId._id ? 
                                         "border-2 border-purple-600 rounded-full" : ""
                                         }>
                                         <img 
-                                        src={`data:image/svg+xml;base64,${avatar.image}`}
+                                        src={`data:image/svg+xml;base64,${avatar.avatarId.image}`}
                                         alt="avatar"
-                                        onClick={() => setSelectedAvatar(idx)}
+                                        onClick={() => setSelectedAvatar(avatar.avatarId)}
                                         className="w-10 sm:w-16 m-1 cursor-pointer"
                                         />
                                         </div>

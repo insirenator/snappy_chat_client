@@ -50,9 +50,9 @@ const Login = () => {
   return (
     <>
       <div className="form-container">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 justify-center">
           <img src="/logo.svg" className="w-16 h-16" />
-          <h1 className="text-white uppercase font-bold text-2xl">Snappy</h1>
+          {/* <h1 className="text-white uppercase font-bold text-2xl">Snappy</h1> */}
         </div>
 
         <form
@@ -75,7 +75,7 @@ const Login = () => {
           <button type="submit" className="link green-link w-full">
             Login
           </button>
-          <h2 className="text-gray-400">
+          <h2 className="text-gray-400 text-center text-sm">
             Don&apos;t have an account?
             <Link to="/register" className="text-blue-300 hover:text-blue-400">
               {" "}

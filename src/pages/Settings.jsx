@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BiPowerOff } from "react-icons/bi";
+import { BiArrowBack, BiPowerOff } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 
 const Settings = () => {
@@ -18,10 +18,16 @@ const Settings = () => {
 
   return user ? (
     <div className="bg-gray-900 w-[95%] max-w-[900px] mx-auto mt-4 lg:mt-16 p-8 text-white">
+      <div className="flex items-center gap-2">
+        <Link 
+          to="../"
+          className="text-lg sm:text-xl font-extrabold text-gray-300 hover:text-gray-500">
+          <BiArrowBack />
+        </Link>
+        <h1 className="text-md sm:text-xl font-extrabold text-gray-400">SETTINGS</h1> 
+      </div>  
 
-      <h1 className="text-xl font-extrabold text-gray-400">SETTINGS</h1>
-
-      <div className="flex md:gap-4 gap-2 items-center my-8">
+      <div className="flex flex-col sm:flex-row gap-4 items-center my-8">
         <img
           src={
             user.avatarImage
@@ -29,15 +35,15 @@ const Settings = () => {
               : "/no-profile-picture.png"
           }
           alt="avatar"
-          className="md:w-16 md:h-16 w-10 h-10"
+          className="sm:w-16 sm:h-16 w-14 h-14"
         />
         <div>
-            <h1 className="text-xl">{user.username}</h1>
-            <p className="text-sm text-gray-400">{user.email}</p>
+            <h1 className="text-md md:text-xl sm:text-left text-center">{user.username}</h1>
+            <p className="text-sm md:text-sm text-gray-400">{user.email}</p>
         </div>
 
         <button 
-            className="ml-auto text-2xl text-red-400 hover:text-red-500"
+            className="sm:ml-auto text-2xl text-red-400 hover:text-red-500"
             onClick={() => {
                 localStorage.removeItem("chat-app-user");
                 navigate("/");
@@ -46,10 +52,10 @@ const Settings = () => {
             <BiPowerOff />
         </button>
       </div>
-
+        {/* Divider */}
       <div className="h-[2px] bg-gray-700"></div>
 
-      <div className="mt-8 transition-all">
+      <div className="mt-8 transition-all flex flex-col items-center sm:items-start gap-4">
         <Link to="/setAvatar" className="text-sm bg-gray-500 p-1.5 rounded bg-opacity-50 hover:bg-purple-400 hover:bg-opacity-50 transition-all">
             {(user.isAvatarImageSet ? "Change" : "Set") + " your Avatar" }
         </Link>

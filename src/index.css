@@ -25,7 +25,7 @@ body {
 }
 
 .link {
-    @apply text-white px-4 py-2 flex justify-center items-center rounded
+    @apply text-white px-4 py-2 flex justify-center items-center rounded text-xs md:text-lg
 }
 
 .blue-link {
@@ -37,15 +37,16 @@ body {
 }
 
 .form-container {
-    @apply md:w-1/2 lg:w-[600px] mx-auto mt-16 w-[90%] px-16 py-12 bg-black rounded-lg flex flex-col gap-8
+    @apply md:w-1/2 lg:w-[600px] mx-auto mt-16 w-[90%] sm:px-16 px-4 py-12 bg-black rounded-lg flex flex-col gap-8
 }
 
 .input-field {
-    @apply bg-transparent text-white w-full border-purple-900 border-2 rounded-md p-2 focus:border-purple-500 focus:outline-none
+    @apply bg-transparent text-white w-full border-purple-900 border-2 rounded-md p-2 focus:border-purple-500 focus:outline-none text-sm md:text-lg
 }
 
 .contacts-list::-webkit-scrollbar {
     width: 2px;
+    @apply sm:max-h-full h-1
 }
 
 .contacts-list::-webkit-scrollbar-thumb {

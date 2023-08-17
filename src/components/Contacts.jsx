@@ -5,13 +5,13 @@
 
 const Contacts = ({ contacts, onClickHandler, selectedContact, activeUsers }) => {
   return (
-    <div className="flex flex-col gap-2 p-1 overflow-auto contacts-list">
+    <div className="flex sm:flex-col flex-row gap-2 p-1 overflow-auto contacts-list">
       {contacts.map((contact, idx) => (
         <div
           tabIndex={0}
           key={contact._id}
           className={
-            `transition-all cursor-pointer flex items-center gap-4 p-2 rounded-lg ${selectedContact === idx ? "bg-purple-500" : "bg-slate-600 hover:bg-slate-700"}`}
+            `transition-all cursor-pointer flex sm:flex-row flex-col min-w-fit items-center gap-4 p-2 rounded-lg ${selectedContact === idx ? "bg-purple-500" : "bg-slate-600 hover:bg-slate-700"}`}
           onClick={() => onClickHandler(idx)}
           onKeyDown={(event) => event.key === "Enter" && onClickHandler(idx)}
         >
