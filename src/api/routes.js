@@ -1,4 +1,4 @@
-const HOST = "http://localhost:3000";
+const HOST = "https://snappy-chat-service.onrender.com";
 
 const register = `${HOST}/api/auth/register`;
 
