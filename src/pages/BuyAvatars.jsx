@@ -39,7 +39,7 @@ const processPurchase = async (avatarId) => {
         //     alert(response.razorpay_order_id)
         //     alert(response.razorpay_signature)
         // },
-        callback_url: `http://localhost:3000/api/avatars/paymentVerification?avatarId=${avatarId}&userId=${storedUser._id}`,
+        callback_url: `https://snappy-chat-service.onrender.com/api/avatars/paymentVerification?avatarId=${avatarId}&userId=${storedUser._id}`,
         prefill: {
             name: storedUser.username,
             email: storedUser.email,
